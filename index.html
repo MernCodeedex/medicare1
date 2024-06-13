@@ -23,6 +23,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.2/jquery.flexslider.min.js"></script>
 
+    <style>
+      .modal {
+  z-index: 1050; /* Adjust this value if necessary */
+}
+
+
+    </style>
   </head>
 
   <body>
@@ -54,10 +61,126 @@
           </ul>
           <ul class="navbar-nav align-items-center">
             <li class="nav-item"><a class="btn btn-outline-danger btn-sm mx-2" href="#!"><span class="d-none d-md-inline">Find a </span>Doctor</a></li>
-            <li class="nav-item"><a class="btn btn-primary btn-sm" href="#appointmentModal" data-toggle="modal"><span class="d-none d-md-inline">Request </span>Appointment</a></li>
+            <li class="nav-item"><a class="btn btn-primary btn-sm" href="#!!" data-toggle="modal" data-target="#appointmentModal"><span class="d-none d-md-inline">Request </span>Appointment</a></li>
           </ul>
         </div>
       </nav>
+
+      <div class="modal fade" id="appointmentModal" tabindex="-1" role="dialog" aria-labelledby="appointmentModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="appointmentModalLabel">Make Appointment</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                  
+                    <form id="appointmentForm" class="zform" method="post">
+                      <div class="zform-feedback"></div><input class="form-control" type="hidden" name="to" value="username@domain.extension" />
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="name" class="font-weight-bold">Patient name</label>
+                                <input type="text" class="form-control font-italic" id="name" placeholder="Enter your name">
+                            <small class="text-danger d-none" id="nameError">Please fill out this field.</small>
+                            </div>
+                            <div class="form-group col-md-6">
+                              <label for="dob-day" class="font-weight-bold">Date of birth*</label>
+                              <div class="form-row">
+                                  <div class="form-group col-md-4">
+                                      <input type="number" class="form-control" id="dob-day" placeholder="DD" min="1" max="31">
+                                  </div>
+                                  <div class="form-group col-md-4">
+                                      <input type="number" class="form-control" id="dob-month" placeholder="MM" min="1" max="12">
+                                  </div>
+                                  <div class="form-group col-md-4">
+                                      <input type="number" class="form-control" id="dob-year" placeholder="YYYY" min="1900" max="2100">
+                                  </div>
+                              </div>
+                          </div>
+                        </div>
+                        <div class="form-row">
+                          <div class="form-group col-md-6"><label class="font-weight-bold" for="inputMail">Email</label><input class="form-control font-italic" id="inputMail" type="email" placeholder="Enter Your Enail" aria-describedby="mail" name="email" required="required" /><small class="form-text text-muted" id="mail">We'll never share your email with anyone else.</small></div>
+
+                            <div class="form-group col-md-6">
+                                <label for="contact" class="font-weight-bold">Contact Number</label>
+                                <input type="tel" class="form-control" id="contact" placeholder="Enter your contact number">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                          <div class="form-group col-md-6">
+                              <label for="email" class="font-weight-bold">Preferred doctor (if any)</label>
+                              <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                          </div>
+                          <div class="form-group col-md-6">
+                              <label for="contact" class="font-weight-bold">At the following hospital</label>
+                              <select class="form-control" id="hospital">
+                                <option>No preference</option>
+                                <option>Labaide Hospital</option>
+                                <option>Central Hospital</option>
+                                <option>Square Hospital</option>
+                            </select>
+                          </div>
+                      </div>
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="email" class="font-weight-bold">Specialty</label>
+                            <select class="form-control" id="hospital">
+                              <option>I am not sure</option>
+                              <option>Labaide Hospital</option>
+                              <option>Central Hospital</option>
+                              <option>Square Hospital</option>
+                          </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="contact" class="font-weight-bold">Reference code (if any)</label>
+                            <input type="number" class="form-control" id="reference-code" placeholder="Enter reference code" >
+                        </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group col-md-12">
+                          <label for="address" class="font-weight-bold">Address</label>
+                          <input type="text" class="form-control" id="address" placeholder="Enter your address">
+                      </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label class="font-weight-bold">Gender</label><br>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="gender" id="male" value="male">
+                            <label class="form-check-label" for="male">Male</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="gender" id="female" value="female">
+                            <label class="form-check-label" for="female">Female</label>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="appointment-date" class="font-weight-bold">Appointment Date</label>
+                        <input type="date" class="form-control" id="appointment-date">
+                    </div>
+                </div>
+                <div class="form-group">
+                  <div  class="custom-control custom-checkbox mb-3">
+                      <input class="custom-control-input" id="customControlCondition" type="checkbox" required="required" name="agree">
+                      <label class="custom-control-label" for="customControlCondition">Confirmation and I agree with terms and conditions</label>
+                      <small class="text-danger d-none" id="agreeError">Please check this box if you want to proceed.</small>
+
+                  </div>
+              </div>
+              <div class="form-group">
+                <div class="g-recaptcha mb-3" data-sitekey="6Lck1FAUAAAAAH3Y3wOtFAx5IjS2z_MD5WpNl4P9" data-theme="light"></div><input class="btn btn-primary" type="submit" name="submit" value="Submit" /><button class="btn btn-danger ml-2" type="button" data-dismiss="modal" aria-label="Close">Cancel</button>
+            </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+      
       <nav class="navbar navbar-expand-lg navbar-light bg-200 navbar-split py-3">
         <div class="container"><a class="navbar-brand d-flex align-items-center z-index-1" href="index.html"><img src="img/logo.png" alt="" height="30" /></a>
           <div class="navbar-nav text-base d-none d-lg-flex">
@@ -186,8 +309,8 @@
                     </div>
                   </div>
                 </div>
-              </div><!-- end of .container-->
-            </section><!-- <section> close ============================-->
+              </div>
+            </section>
 
           </li>
           <li data-zanim-timeline='{"delay":0}' data-thumb-alt="" class="flex-active-slide" style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; transition: opacity 0.6s ease 0s; z-index: 1;">
@@ -311,7 +434,7 @@
                 <div class="col-md-6 col-xxl-4 mb-4 mb-xxl-0">
                   <div class="card h-100 hvr-shadow h-100"><img class="card-img-top" src="img/blog/card1.jpg" alt="" />
                     <div class="card-body">
-                      <h5><a class="stretched-link text-decoration-none" href="research-single.html">Brigham Health Physicians Named 'Top Doctors'</a></h5>
+                      <h5><a class="stretched-link text-decoration-none" href="brigham-health.html">Brigham Health Physicians Named 'Top Doctors'</a></h5>
                       <p class="mb-0">More than 275 Brigham Health physicians were included on Boston magazine’s 2019 list of &quot;Top Doctors.” To prepare the annual list, Boston magazine partners with Castle Connolly Medical.</p>
                     </div>
                     <div class="card-footer"><a href="research-single.html">Learn More<span class="fa-chevron-right fas ml-1" data-fa-transform="shrink-4 down-1.5"></span></a></div>
@@ -534,7 +657,7 @@
       <section>
         <div class="container">
           <div class="row">
-            <div class="col"><a class="d-block" href="index.html"><img src="assets/img/logo.png" alt="" height="40" /></a>
+            <div class="col"><a class="d-block" href="index.html"><img src="img/logo.png" alt="" height="40" /></a>
               <h5 class="text-uppercase border-bottom mt-4 pb-2 mb-3 d-inline-block">brigham and women's hospital</h5>
               <p class="text-uppercase mb-1">75 francis street, boston ma 02115</p>
               <p class="mb-1">General information: <a href="#!">671-732-5500</a></p>
@@ -566,6 +689,7 @@
           </div>
         </div>
       </section>
+
       <footer class="bg-dark py-3">
         <div class="container">
           <div class="row flex-center">
@@ -603,6 +727,34 @@
             });
         });
     </script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script>
+  document.getElementById('appointmentForm').addEventListener('submit', function(event) {
+      var nameInput = document.getElementById('name');
+      var agreeCheckbox = document.getElementById('agree-terms');
+      var nameError = document.getElementById('nameError');
+      var agreeError = document.getElementById('agreeError');
+
+      if (!nameInput.value.trim()) { // Check if the name field is empty or only contains whitespace
+          nameError.classList.remove('d-none'); // Show the error message
+          event.preventDefault(); // Prevent form submission
+      } else {
+          nameError.classList.add('d-none'); // Hide the error message
+      }
+
+      if (!agreeCheckbox.checked) {
+          agreeError.classList.remove('d-none'); // Show the error message
+          event.preventDefault(); // Prevent form submission
+      } else {
+          agreeError.classList.add('d-none'); // Hide the error message
+      }
+  });
+</script>
+
   </body>
 
 </html>
