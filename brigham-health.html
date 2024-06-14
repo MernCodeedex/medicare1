@@ -15,42 +15,61 @@
     <meta name="theme-color" content="#ffffff">
     <link href="https://fonts.googleapis.com/css?family=Oxygen%7cRaleway:100,200,300,400,500,600,700,800,900" rel="stylesheet">
     <link href="assets/lib/loaders.css/loaders.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="..." crossorigin="anonymous" />
+    <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"> -->
+
     <link href="brigham.css" rel="stylesheet">
+    <style>
+      @keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate {
+  animation: fadeIn 1s ease forwards;
+}
+
+    </style>
   </head>
 
   <body>
     <main class="main" id="top">
     <a class="bottom-to-top rounded-soft" href="#top" data-fancyscroll><span class="fas fa-angle-up lg" data-fa-transform="down-2"></span></a>
-      <nav class="navbar navbar-expand navbar-light bg-light sticky-top font-weight-semi-bold fs--1 text-base shadow-sm">
-        <div class="container">
-          <ul class="navbar-nav align-items-center">
-            <li class="nav-item dropdown"><a class="btn btn-light btn-sm dropdown-toggle mr-2" id="languageDropdown" href="#!" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/img/illustrations/united-states.svg" width="20" alt="" /></a>
-              <div class="dropdown-menu" aria-labelledby="languageDropdown"><a class="dropdown-item font-weight-semi-bold text-primary d-flex justify-content-between" href="#!">
-                  <div class="media align-items-center"><img src="img/illustrations/united-states.svg.svg" width="20" alt="" />
-                    <div class="media-body ml-2">EN</div>
-                  </div><span class="fas fa-check" data-fa-transform="down-4 shrink-4"></span>
-                </a><a class="dropdown-item font-weight-semi-bold text-primary" href="#!">
-                  <div class="media align-items-center"><img src="img/illustrations/germany.svg" width="20" alt="" />
-                    <div class="media-body ml-2">DE</div>
-                  </div>
-                </a><a class="dropdown-item font-weight-semi-bold text-primary" href="#!">
-                  <div class="media align-items-center"><img src="img/illustrations/saudi-arabia.svg.svg" width="20" alt="" />
-                    <div class="media-body ml-2">AR</div>
-                  </div>
-                </a></div>
-            </li>
-            <li class="nav-item">
-              <form class="input-iconic">
-                <div class="input-icon"><button type="submit"><span class="fas fa-search text-300"></span></button></div><input class="form-control form-control-sm" type="search" placeholder="Search..." />
-              </form>
-            </li>
-          </ul>
-          <ul class="navbar-nav align-items-center">
-            <li class="nav-item"><a class="btn btn-outline-danger btn-sm mx-2" href="#!"><span class="d-none d-md-inline">Find a </span>Doctor</a></li>
-            <li class="nav-item"><a class="btn btn-primary btn-sm" href="#" data-toggle="modal"><span class="d-none d-md-inline">Request </span>Appointment</a></li>
-          </ul>
-        </div>
-      </nav>
+    <nav class="navbar navbar-expand navbar-light bg-light sticky-top font-weight-semi-bold fs--1 text-base shadow-sm">
+      <div class="container">
+        <ul class="navbar-nav align-items-center">
+          <li class="nav-item dropdown"><a class="btn btn-light btn-sm dropdown-toggle mr-2" id="languageDropdown" href="#!" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="img/illustrations/united-states.svg.svg" width="20" alt="" /></a>
+            <div class="dropdown-menu" aria-labelledby="languageDropdown"><a class="dropdown-item font-weight-semi-bold text-primary d-flex justify-content-between" href="#!">
+                <div class="media align-items-center"><img src="img/illustrations/germany.svg" width="20" alt="" />
+                  <div class="media-body ml-2">EN</div>
+                </div><span class="fas fa-check" data-fa-transform="down-4 shrink-4"></span>
+              </a><a class="dropdown-item font-weight-semi-bold text-primary" href="#!">
+                <div class="media align-items-center"><img src="img/illustrations/germany.svg" width="20" alt="..." />
+                  <div class="media-body ml-2">DE</div>
+                </div>
+              </a><a class="dropdown-item font-weight-semi-bold text-primary" href="#!">
+                <div class="media align-items-center"><img src="img/illustrations/germany.svg" width="20" alt="" />
+                  <div class="media-body ml-2">AR</div>
+                </div>
+              </a></div>
+          </li>
+          <li class="nav-item">
+            <form class="input-iconic">
+              <div class="input-icon"><button type="submit"><span class="fas fa-search text-300"></span></button></div><input class="form-control form-control-sm" type="search" placeholder="Search..." />
+            </form>
+          </li>
+        </ul>
+        <ul class="navbar-nav align-items-center">
+          <li class="nav-item"><a class="btn btn-outline-danger btn-sm mx-2" href="#!"><span class="d-none d-md-inline">Find a </span>Doctor</a></li>
+          <li class="nav-item"><a class="btn btn-primary btn-sm" href="#!!" data-toggle="modal" data-target="#appointmentModal"><span class="d-none d-md-inline">Request </span>Appointment</a></li>
+        </ul>
+      </div>
+    </nav>
       <nav class="navbar navbar-expand-lg navbar-light bg-200 navbar-split py-3">
         <div class="container"><a class="navbar-brand d-flex align-items-center z-index-1" href="index.html"><img src="img/logo.png" alt="" height="30" /></a>
           <div class="navbar-nav text-base d-none d-lg-flex">
@@ -154,8 +173,120 @@
         </div>
       </nav>
 
+      <div class="modal fade" id="appointmentModal" tabindex="-1" role="dialog" aria-labelledby="appointmentModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="appointmentModalLabel">Make Appointment</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                  
+                    <form id="appointmentForm" class="zform" method="post">
+                      <div class="zform-feedback"></div><input class="form-control" type="hidden" name="to" value="username@domain.extension" />
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="name" class="font-weight-bold">Patient name</label>
+                                <input type="text" class="form-control font-italic" id="name" placeholder="Enter your name">
+                            <small class="text-danger d-none" id="nameError">Please fill out this field.</small>
+                            </div>
+                            <div class="form-group col-md-6">
+                              <label for="dob-day" class="font-weight-bold">Date of birth*</label>
+                              <div class="form-row">
+                                  <div class="form-group col-md-4">
+                                      <input type="number" class="form-control" id="dob-day" placeholder="DD" min="1" max="31">
+                                  </div>
+                                  <div class="form-group col-md-4">
+                                      <input type="number" class="form-control" id="dob-month" placeholder="MM" min="1" max="12">
+                                  </div>
+                                  <div class="form-group col-md-4">
+                                      <input type="number" class="form-control" id="dob-year" placeholder="YYYY" min="1900" max="2100">
+                                  </div>
+                              </div>
+                          </div>
+                        </div>
+                        <div class="form-row">
+                          <div class="form-group col-md-6"><label class="font-weight-bold" for="inputMail">Email</label><input class="form-control font-italic" id="inputMail" type="email" placeholder="Enter Your Enail" aria-describedby="mail" name="email" required="required" /><small class="form-text text-muted" id="mail">We'll never share your email with anyone else.</small></div>
 
-      <section class="text-primary" data-zanim-timeline='{"delay":0}' data-zanim-trigger="scroll">
+                            <div class="form-group col-md-6">
+                                <label for="contact" class="font-weight-bold">Contact Number</label>
+                                <input type="tel" class="form-control" id="contact" placeholder="Enter your contact number">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                          <div class="form-group col-md-6">
+                              <label for="email" class="font-weight-bold">Preferred doctor (if any)</label>
+                              <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                          </div>
+                          <div class="form-group col-md-6">
+                              <label for="contact" class="font-weight-bold">At the following hospital</label>
+                              <select class="form-control" id="hospital">
+                                <option>No preference</option>
+                                <option>Labaide Hospital</option>
+                                <option>Central Hospital</option>
+                                <option>Square Hospital</option>
+                            </select>
+                          </div>
+                      </div>
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="email" class="font-weight-bold">Specialty</label>
+                            <select class="form-control" id="hospital">
+                              <option>I am not sure</option>
+                              <option>Labaide Hospital</option>
+                              <option>Central Hospital</option>
+                              <option>Square Hospital</option>
+                          </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="contact" class="font-weight-bold">Reference code (if any)</label>
+                            <input type="number" class="form-control" id="reference-code" placeholder="Enter reference code" >
+                        </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group col-md-12">
+                          <label for="address" class="font-weight-bold">Address</label>
+                          <input type="text" class="form-control" id="address" placeholder="Enter your address">
+                      </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label class="font-weight-bold">Gender</label><br>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="gender" id="male" value="male">
+                            <label class="form-check-label" for="male">Male</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="gender" id="female" value="female">
+                            <label class="form-check-label" for="female">Female</label>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="appointment-date" class="font-weight-bold">Appointment Date</label>
+                        <input type="date" class="form-control" id="appointment-date">
+                    </div>
+                </div>
+                <div class="form-group">
+                  <div  class="custom-control custom-checkbox mb-3">
+                      <input class="custom-control-input" id="customControlCondition" type="checkbox" required="required" name="agree">
+                      <label class="custom-control-label" for="customControlCondition">Confirmation and I agree with terms and conditions</label>
+                      <small class="text-danger d-none" id="agreeError">Please check this box if you want to proceed.</small>
+
+                  </div>
+              </div>
+              <div class="form-group">
+                <div class="g-recaptcha mb-3" data-sitekey="6Lck1FAUAAAAAH3Y3wOtFAx5IjS2z_MD5WpNl4P9" data-theme="light"></div><input class="btn btn-primary" type="submit" name="submit" value="Submit" /><button class="btn btn-danger ml-2" type="button" data-dismiss="modal" aria-label="Close">Cancel</button>
+            </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+      <section class="text-primary" data-zanim-timeline='{"delay":0}'>
         <div class="bg-holder overlay overlay-white-gradient" style="background-image:url(img/blog/B1.jpg);"></div>
   
         <div class="container">
@@ -178,44 +309,45 @@
               <div class="row">
                 <div class="col">
                   <div class="bg-primary rounded p-4">
-                    <ul class="list-unstyled text-base border-left border-white-25 text-white ml-3 mb-0">
-                      <li class="pb-3 border-bottom border-white-25 position-relative" >
+                    <ul id="animation-list" class="list-unstyled text-base border-left border-white-25 text-white ml-3 mb-0">
+                      <li class="pb-3 border-bottom border-white-25 position-relative"data-zanim-timeline="{delay:0.2}">
                         <div class="overflow-hidden">
                           <p class="ml-4 mb-0" data-zanim-xs='{"animation":"default","delay":0.5}'><span class="font-weight-semi-bold">Research Name</span><span class="fs--1 ml-2">Vulputate Cursus</span></p>
                         </div>
                         <div class="icon-item icon-hang text-primary" style="top: 10px" data-zanim-xs='{"from":{"scale":0.1},"to":{"scale":1},"delay":0.1,"ease":"Power0.easeOut"}'><span class="fa fa-medkit"></span></div>
                       </li>
-                      <li class="py-3 border-bottom border-white-25 position-relative" data-zanim-timeline="{delay:0.2}" data-zanim-trigger="scroll">
+                      <li class="py-3 border-bottom border-white-25 position-relative" data-zanim-timeline="{delay:0.2}"> 
+                        <!-- data-zanim-trigger="scroll" -->
                         <div class="overflow-hidden">
                           <p class="ml-4 mb-0" data-zanim-xs='{"animation":"default","delay":0.5}'><span class="font-weight-bold">Patient</span><span class="fs--1 ml-2">Andrew Bert</span></p>
                         </div>
                         <div class="icon-item icon-hang text-primary" data-zanim-xs='{"from":{"scale":0.1},"to":{"scale":1},"delay":0.1,"ease":"Power0.easeOut"}'><span class="fas fa-user"></span></div>
                       </li>
-                      <li class="py-3 border-bottom border-white-25 position-relative" data-zanim-timeline='{"delay":0.3} 'data-zanim-trigger="scroll">
+                      <li class="py-3 border-bottom border-white-25 position-relative" data-zanim-timeline='{"delay":0.3}'>
                         <div class="overflow-hidden">
                           <p class="ml-4 mb-0" data-zanim-xs='{"animation":"default","delay":0.5}'><span class="font-weight-bold">Department</span><span class="fs--1 ml-2">Neurology</span></p>
                         </div>
                         <div class="icon-item icon-hang text-primary" data-zanim-xs='{"from":{"scale":0.1},"to":{"scale":1},"delay":0.1,"ease":"Power0.easeOut"}'><span class="fas fa-vihara"></span></div>
                       </li>
-                      <li class="py-3 border-bottom border-white-25 position-relative" data-zanim-timeline='{"delay":0.4}' data-zanim-trigger="scroll">
+                      <li class="py-3 border-bottom border-white-25 position-relative" data-zanim-timeline='{"delay":0.4}'>
                         <div class="overflow-hidden">
                           <p class="ml-4 mb-0" data-zanim-xs='{"animation":"default","delay":0.5}'><span class="font-weight-bold">Doctor</span><span class="fs--1 ml-2">Dr. Teresa Mayer</span></p>
                         </div>
                         <div class="icon-item icon-hang text-primary" data-zanim-xs='{"from":{"scale":0.1},"to":{"scale":1},"delay":0.1,"ease":"Power0.easeOut"}'><span class="fas fa-user-md"></span></div>
                       </li>
-                      <li class="py-3 border-bottom border-white-25 position-relative" data-zanim-timeline='{"delay":0.5}' data-zanim-trigger="scroll">
+                      <li class="py-3 border-bottom border-white-25 position-relative" data-zanim-timeline='{"delay":0.5}'>
                         <div class="overflow-hidden">
                           <p class="ml-4 mb-0" data-zanim-xs='{"animation":"default","delay":0.5}'><span class="font-weight-bold">Category</span><span class="fs--1 ml-2">Neurology</span></p>
                         </div>
                         <div class="icon-item icon-hang text-primary" data-zanim-xs='{"from":{"scale":0.1},"to":{"scale":1},"delay":0.1,"ease":"Power0.easeOut"}'><span class="fas fa-stethoscope"></span></div>
                       </li>
-                      <li class="py-3 border-bottom border-white-25 position-relative" data-zanim-timeline='{"delay":0.6}' data-zanim-trigger="scroll">
+                      <li class="py-3 border-bottom border-white-25 position-relative" data-zanim-timeline='{"delay":0.6}'>
                         <div class="overflow-hidden">
                           <p class="ml-4 mb-0" data-zanim-xs='{"animation":"default","delay":0.5}'><span class="font-weight-bold">Date</span><span class="fs--1 ml-2">25th November 2018</span></p>
                         </div>
                         <div class="icon-item icon-hang text-primary" data-zanim-xs='{"from":{"scale":0.1},"to":{"scale":1},"delay":0.1,"ease":"Power0.easeOut"}'><span class="far fa-calendar-alt"></span></div>
                       </li>
-                      <li class="pt-3 border-s position-relative" data-zanim-timeline='{"delay":0.7}' data-zanim-trigger="scroll">
+                      <li class="pt-3 border-s position-relative" data-zanim-timeline='{"delay":0.7}'>
                         <div class="overflow-hidden">
                           <p class="ml-4 mb-0" data-zanim-xs='{"animation":"default","delay":0.5}'><span class="font-weight-bold">Location</span><span class="fs--1 ml-2">Bulls Stadium, California</span></p>
                         </div>
@@ -591,6 +723,27 @@
     <script src="assets/lib/loaders.css/loaders.css.js"></script>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script src="assets/js/theme.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var animationList = document.querySelectorAll('#animation-list [data-zanim-timeline]');
+        
+        animationList.forEach(function(item, index) {
+          var delayAttr = item.getAttribute('data-zanim-timeline');
+          var delay = parseFloat(delayAttr.match(/delay:([0-9.]+)/)[1]) * 1000; // Convert delay to milliseconds
+          
+          setTimeout(function() {
+            item.classList.add('animate'); // Add a class that triggers your animation (replace with your actual animation class)
+          }, delay);
+        });
+      });
+    </script>
   </body>
 
 </html>
